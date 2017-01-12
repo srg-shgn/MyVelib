@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 
   func refreshUI() {
     print("Stations count: \(modelController.stations.count)")
-    print("Stations near current position: \(modelController.currentShortStationsList.count)")
+    print("Stations near current position: \(modelController.lists[2].shortStationsList.count)")
   }
 
 }

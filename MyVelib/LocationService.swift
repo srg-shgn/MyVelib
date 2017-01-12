@@ -11,7 +11,7 @@ import CoreLocation
 
 class LocationService: NSObject, CLLocationManagerDelegate {
   
-  var currentLocation: CLLocationCoordinate2D = kCLLocationCoordinate2DInvalid
+  var currentLocation: CLLocation?
   var isAuthorised = false { 
     didSet { 
       if isAuthorised {
@@ -27,16 +27,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
   override init() {
     super.init()
     locationManager.delegate = self
-
-    if isAuthorised {
-      locationManager.startUpdatingLocation()
-    } else {
-      locationManager.requestWhenInUseAuthorization()
-    }
+    locationManager.requestWhenInUseAuthorization()
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    currentLocation = locations.last?.coordinate ?? kCLLocationCoordinate2DInvalid
+    currentLocation = locations.last
   }
   
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -44,9 +39,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
   }
   
   func distance(of coordinate: CLLocationCoordinate2D) -> CLLocationDistance {
-    let currentLocation = CLLocation(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude)
     let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-    return currentLocation.distance(from: location)
+    return currentLocation?.distance(from: location) ?? Double.infinity
   }
 
 }

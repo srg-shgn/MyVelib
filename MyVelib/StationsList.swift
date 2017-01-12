@@ -9,29 +9,31 @@
 import Foundation
 
 protocol StationsList {
-  var allStations: [Station] { get set }
+  var allStations: [Station] { get }
   var shortStationsList: [Station] { get }
 }
 
 struct FavoriteStationsList: StationsList {
-  var allStations: [Station] = []
+  weak var modelController: ModelController!
   
   let favoriteService: FavoriteService
   let favoriteList: FavoriteList
   let contractName: ContractName
   
+  var allStations: [Station] { return modelController.stations }
   var shortStationsList: [Station] { 
     return allStations.filter { favoriteService.isFavorite(stationId: $0.number, contrat: contractName, list: favoriteList) }
   }
 }
 
 struct GeolocalisedStationsList: StationsList {
-  var allStations: [Station] = []
+  weak var modelController: ModelController!
   
   let locationService: LocationService
   
   private let maximumDistance = 500.0
   
+  var allStations: [Station] { return modelController.stations }
   var shortStationsList: [Station] { 
     return allStations.filter { locationService.distance(of: $0.position.coordinate) < maximumDistance }
   }

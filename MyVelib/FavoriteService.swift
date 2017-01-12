@@ -20,25 +20,26 @@ class FavoriteService {
   }
   
   func addFavorite(stationId: Int, contrat: ContractName, list: FavoriteList) {
-    var favorites = Set(self.favorites(contrat: contrat, list: list))
+    var favorites = self.favorites(contrat: contrat, list: list)
     favorites.insert(stationId)
-    saveFavorites(Array(favorites), contrat: contrat, list: list)
+    saveFavorites(favorites, contrat: contrat, list: list)
   }
   
   func removeFavorite(stationId: Int, contrat: ContractName, list: FavoriteList) {
-    var favorites = Set(self.favorites(contrat: contrat, list: list))
+    var favorites = self.favorites(contrat: contrat, list: list)
     favorites.remove(stationId)
-    saveFavorites(Array(favorites), contrat: contrat, list: list)
+    saveFavorites(favorites, contrat: contrat, list: list)
   }
   
-  private func favorites(contrat: ContractName, list: FavoriteList) -> [Int] {
+  private func favorites(contrat: ContractName, list: FavoriteList) -> Set<Int> {
     let key = self.key(for: contrat, list: list)
-    return userDefaults.array(forKey: key) as! [Int]
+    let array = userDefaults.array(forKey: key) as? [Int] ?? []
+    return Set(array)
   }
   
-  private func saveFavorites(_ favorites: [Int], contrat: ContractName, list: FavoriteList) {
+  private func saveFavorites(_ favorites: Set<Int>, contrat: ContractName, list: FavoriteList) {
     let key = self.key(for: contrat, list: list)
-    userDefaults.set(favorites, forKey: key)
+    userDefaults.set(Array(favorites), forKey: key)
   }
   
   private func key(for contrat: ContractName, list: FavoriteList) -> String {

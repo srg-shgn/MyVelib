@@ -9,9 +9,7 @@
 import Foundation
 
 class ModelController {
-  private var lists = [StationsList]()
-  var currentListIndex = 2
-  var currentShortStationsList: [Station] { return lists[currentListIndex].shortStationsList }
+  private(set) var lists = [StationsList]()
   
   private let bikeService = BikeService()
   private let locationService = LocationService()
@@ -26,9 +24,9 @@ class ModelController {
   }
   
   func updateLists() {
-    let homeList = FavoriteStationsList(allStations: stations, favoriteService: favoriteService, favoriteList: .home, contractName: currentContract)
-    let workList = FavoriteStationsList(allStations: stations, favoriteService: favoriteService, favoriteList: .work, contractName: currentContract)
-    let geolocalisedList = GeolocalisedStationsList(allStations: stations, locationService: locationService)
+    let homeList = FavoriteStationsList(modelController: self, favoriteService: favoriteService, favoriteList: .home, contractName: currentContract)
+    let workList = FavoriteStationsList(modelController: self, favoriteService: favoriteService, favoriteList: .work, contractName: currentContract)
+    let geolocalisedList = GeolocalisedStationsList(modelController: self, locationService: locationService)
     lists = [ homeList, workList, geolocalisedList ]
   }
   
