@@ -43,6 +43,16 @@ class ListViewController: UIViewController {
     print("Stations in short list: \(list.shortStationsList.count)")
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let mapViewController = segue.destination as? MapViewController else { return }
+    mapViewController.list = list
+    
+    if sender is UITableViewCell {
+      let selectedRow = tableView.indexPathForSelectedRow!.row
+      let selectedStation = list.shortStationsList[selectedRow]
+      mapViewController.stationToShow = selectedStation
+    }
+  }
 }
 
 extension BikeAvailability {
