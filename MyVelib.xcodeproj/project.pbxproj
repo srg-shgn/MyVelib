@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DBA71E351E27889800774154 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA71E341E27889800774154 /* ListViewController.swift */; };
 		DBDF0F1F1E252E2300EADAC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0F1E1E252E2300EADAC8 /* AppDelegate.swift */; };
-		DBDF0F211E252E2300EADAC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0F201E252E2300EADAC8 /* ViewController.swift */; };
+		DBDF0F211E252E2300EADAC8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0F201E252E2300EADAC8 /* RootViewController.swift */; };
 		DBDF0F241E252E2300EADAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBDF0F221E252E2300EADAC8 /* Main.storyboard */; };
 		DBDF0F261E252E2300EADAC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBDF0F251E252E2300EADAC8 /* Assets.xcassets */; };
 		DBDF0F291E252E2300EADAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBDF0F271E252E2300EADAC8 /* LaunchScreen.storyboard */; };
@@ -42,9 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DBA71E341E27889800774154 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		DBDF0F1B1E252E2300EADAC8 /* MyVelib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVelib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF0F1E1E252E2300EADAC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBDF0F201E252E2300EADAC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBDF0F201E252E2300EADAC8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		DBDF0F231E252E2300EADAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBDF0F251E252E2300EADAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBDF0F281E252E2300EADAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,7 +169,8 @@
 		DBDF0F4E1E252E4200EADAC8 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
-				DBDF0F201E252E2300EADAC8 /* ViewController.swift */,
+				DBDF0F201E252E2300EADAC8 /* RootViewController.swift */,
+				DBA71E341E27889800774154 /* ListViewController.swift */,
 				DBDF0F221E252E2300EADAC8 /* Main.storyboard */,
 			);
 			name = "Presentation Layer";
@@ -315,7 +318,8 @@
 				DBE5082F1E253853001763A4 /* StationsList.swift in Sources */,
 				DBDF0F5A1E252FA600EADAC8 /* FavoriteService.swift in Sources */,
 				DBDF0F501E252E6600EADAC8 /* Entities.swift in Sources */,
-				DBDF0F211E252E2300EADAC8 /* ViewController.swift in Sources */,
+				DBA71E351E27889800774154 /* ListViewController.swift in Sources */,
+				DBDF0F211E252E2300EADAC8 /* RootViewController.swift in Sources */,
 				DBDF0F561E252EA600EADAC8 /* BikeService.swift in Sources */,
 				DBDF0F1F1E252E2300EADAC8 /* AppDelegate.swift in Sources */,
 				DBDF0F541E252E9300EADAC8 /* WebService.swift in Sources */,

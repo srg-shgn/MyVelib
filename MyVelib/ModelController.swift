@@ -17,13 +17,9 @@ class ModelController {
   
   var currentContract: ContractName = "Paris"
   var contracts = [Contrat]()
-  var stations = [Station]() {
-    didSet {
-      updateLists()
-    }
-  }
+  var stations = [Station]() 
   
-  func updateLists() {
+  init() {
     let homeList = FavoriteStationsList(modelController: self, favoriteService: favoriteService, favoriteList: .home, contractName: currentContract)
     let workList = FavoriteStationsList(modelController: self, favoriteService: favoriteService, favoriteList: .work, contractName: currentContract)
     let geolocalisedList = GeolocalisedStationsList(modelController: self, locationService: locationService)
