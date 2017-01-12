@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DBA71E351E27889800774154 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA71E341E27889800774154 /* ListViewController.swift */; };
 		DBA71E391E279E8700774154 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA71E381E279E8700774154 /* MapViewController.swift */; };
+		DBA71E3B1E27A16B00774154 /* CityChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA71E3A1E27A16B00774154 /* CityChooserViewController.swift */; };
 		DBDF0F1F1E252E2300EADAC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0F1E1E252E2300EADAC8 /* AppDelegate.swift */; };
 		DBDF0F211E252E2300EADAC8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0F201E252E2300EADAC8 /* RootViewController.swift */; };
 		DBDF0F241E252E2300EADAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBDF0F221E252E2300EADAC8 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		DBA71E341E27889800774154 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		DBA71E381E279E8700774154 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DBA71E3A1E27A16B00774154 /* CityChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityChooserViewController.swift; sourceTree = "<group>"; };
 		DBDF0F1B1E252E2300EADAC8 /* MyVelib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVelib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF0F1E1E252E2300EADAC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBDF0F201E252E2300EADAC8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				DBDF0F201E252E2300EADAC8 /* RootViewController.swift */,
 				DBA71E341E27889800774154 /* ListViewController.swift */,
 				DBA71E381E279E8700774154 /* MapViewController.swift */,
+				DBA71E3A1E27A16B00774154 /* CityChooserViewController.swift */,
 				DBDF0F221E252E2300EADAC8 /* Main.storyboard */,
 			);
 			name = "Presentation Layer";
@@ -326,6 +329,7 @@
 				DBA71E391E279E8700774154 /* MapViewController.swift in Sources */,
 				DBDF0F561E252EA600EADAC8 /* BikeService.swift in Sources */,
 				DBDF0F1F1E252E2300EADAC8 /* AppDelegate.swift in Sources */,
+				DBA71E3B1E27A16B00774154 /* CityChooserViewController.swift in Sources */,
 				DBDF0F541E252E9300EADAC8 /* WebService.swift in Sources */,
 				DBDF0F521E252E7B00EADAC8 /* Helpers.swift in Sources */,
 			);

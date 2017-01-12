@@ -14,17 +14,20 @@ class RootViewController: UIViewController {
   let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
   let pagesDataSource = PagesDataSource()
 
+  @IBOutlet weak var infoButton: UIButton!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     pagesDataSource.lists = modelController.lists
     
+    pageViewController.delegate = self
     pageViewController.dataSource = pagesDataSource
     pageViewController.setViewControllers(pagesDataSource.firstPages, direction: .forward, animated: false, completion: nil)
     
     addChildViewController(pageViewController)
     pageViewController.view.frame = view.bounds
-    view.addSubview(pageViewController.view)
+    view.insertSubview(pageViewController.view, at: 0)
     pageViewController.didMove(toParentViewController: self)
     
     refresh()
@@ -49,6 +52,16 @@ class RootViewController: UIViewController {
     (pageViewController.viewControllers?.first as? ListViewController)?.refreshUI()
   }
 
+}
+
+extension RootViewController: UIPageViewControllerDelegate {
+  func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+    infoButton.layer.opacity = 0
+  }
+  
+  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    infoButton.layer.opacity = 1
+  }
 }
 
 class PagesDataSource: NSObject, UIPageViewControllerDataSource {
