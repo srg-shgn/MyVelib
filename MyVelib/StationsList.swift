@@ -8,9 +8,27 @@
 
 import Foundation
 
+enum BikeAvailability {
+  case bad, warning, good, undefined
+}
+
 protocol StationsList {
   var allStations: [Station] { get }
   var shortStationsList: [Station] { get }
+  var bikeAvailability: BikeAvailability { get }
+}
+
+extension StationsList {
+  var bikeAvailability: BikeAvailability {
+    guard shortStationsList.count > 0 else { return .undefined }
+    let totalBikeNumber = shortStationsList.map { $0.availableBikes }.reduce(0,+)
+    let reallyAvailableStations = shortStationsList.filter { $0.availableBikes > 1 }.count
+    switch (totalBikeNumber, reallyAvailableStations) {
+    case (0, _): return .bad
+    case (_, 0): return .warning
+    default: return .good
+    }
+  }
 }
 
 struct FavoriteStationsList: StationsList {
@@ -35,7 +53,15 @@ struct GeolocalisedStationsList: StationsList {
   
   var allStations: [Station] { return modelController.stations }
   var shortStationsList: [Station] { 
-    return allStations.filter { locationService.distance(of: $0.position.coordinate) < maximumDistance }
+    return Array(allStations.filter { locationService.distance(of: $0.position.coordinate) < maximumDistance }.sorted(by: distance).prefix(5))
+  }
+  
+  private func distance(lhs: Station, rhs: Station) -> Bool {
+    return distance(of: lhs) < distance(of: rhs)
+  }
+  
+  func distance(of station: Station) -> Double {
+    return locationService.distance(of: station.position.coordinate)
   }
 }
 

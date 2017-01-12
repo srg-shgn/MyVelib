@@ -29,7 +29,7 @@ class ListViewController: UIViewController {
     tableView.dataSource = listDataSource
   }
   
-  override func viewDidAppear(_ animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     refreshUI()
@@ -38,10 +38,22 @@ class ListViewController: UIViewController {
   func refreshUI() {
     titleLabel.text = list is FavoriteStationsList ? "Favoris" : "Géoloc"
     tableView.reloadData()
+    view.backgroundColor = list.bikeAvailability.color
     print("Stations count: \(list.allStations.count)")
     print("Stations in short list: \(list.shortStationsList.count)")
   }
   
+}
+
+extension BikeAvailability {
+  var color: UIColor {
+    switch self {
+    case .bad: return #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
+    case .warning: return #colorLiteral(red: 0.8787227273, green: 0.4410843253, blue: 0, alpha: 1)
+    case .good: return #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    case .undefined: return #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    }
+  }
 }
 
 class ListDataSource: NSObject, UITableViewDataSource {
@@ -54,7 +66,17 @@ class ListDataSource: NSObject, UITableViewDataSource {
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let station = list.shortStationsList[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+
     cell.textLabel?.text = station.name
+    
+    let distanceText: String
+    if let list = list as? GeolocalisedStationsList {
+      distanceText = "\(Int(list.distance(of: station))) m - " 
+    } else {
+      distanceText = ""
+    }
+    cell.detailTextLabel?.text = distanceText + "\(station.availableBikes) vélos - \(station.availableStands) places"
+
     return cell
   }
 
