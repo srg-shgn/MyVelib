@@ -16,6 +16,9 @@ class MapViewController: UIViewController {
 
   @IBOutlet weak var mapView: MKMapView!
   
+  
+  //MARK: - View Life Cycle 
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -39,6 +42,9 @@ class MapViewController: UIViewController {
     print("station to show: \(stationToShow?.name ?? "NONE")")
   }
   
+
+  //MARK: - IBAction 
+
   @IBAction func close() {
     dismiss(animated: true, completion: nil)
   }
@@ -46,12 +52,18 @@ class MapViewController: UIViewController {
   @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
   }
 
-  func centerMap(at coordinate: CLLocationCoordinate2D) {
+  
+  //MARK: - Private functions 
+
+  private func centerMap(at coordinate: CLLocationCoordinate2D) {
     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     let region = MKCoordinateRegion(center: coordinate, span: span)
     mapView.setRegion(region, animated: false)
   }
 }
+
+
+//MARK: - StationAnnotation
 
 class StationAnnotation: NSObject, MKAnnotation {
   let station: Station
@@ -71,6 +83,9 @@ class StationAnnotation: NSObject, MKAnnotation {
 
 }
 
+
+//MARK: - StationAnnotationView 
+
 class StationAnnotationView: MKAnnotationView {
   let label = UILabel(frame: CGRect(x: 0, y: -8, width: 36, height: 38))
   
@@ -88,6 +103,9 @@ class StationAnnotationView: MKAnnotationView {
     fatalError("init(coder:) has not been implemented")
   }
 }
+
+
+//MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
