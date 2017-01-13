@@ -42,6 +42,9 @@ class MapViewController: UIViewController {
   @IBAction func close() {
     dismiss(animated: true, completion: nil)
   }
+  
+  @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
+  }
 
   func centerMap(at coordinate: CLLocationCoordinate2D) {
     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
