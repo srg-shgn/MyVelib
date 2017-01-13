@@ -40,7 +40,20 @@ struct FavoriteStationsList: StationsList {
   
   var allStations: [Station] { return modelController.stations }
   var shortStationsList: [Station] { 
-    return allStations.filter { favoriteService.isFavorite(stationId: $0.number, contrat: contractName, list: favoriteList) }
+    return allStations.filter { isFavorite(station: $0) }
+  }
+  
+  func isFavorite(station: Station) -> Bool {
+    return favoriteService.isFavorite(stationId: station.number, contrat: contractName, list: favoriteList)
+  }
+  
+  func toggleFavorite(station: Station) {
+    let isFavorite = self.isFavorite(station: station)
+    if isFavorite {
+      favoriteService.removeFavorite(stationId: station.number, contrat: contractName, list: favoriteList)
+    } else {
+      favoriteService.addFavorite(stationId: station.number, contrat: contractName, list: favoriteList)
+    }
   }
 }
 
