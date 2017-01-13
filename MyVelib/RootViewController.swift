@@ -45,7 +45,9 @@ class RootViewController: UIViewController {
   }
   
   func displayError(_ error: Error) {
-    print(error.localizedDescription)
+    let alertController = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    present(alertController, animated: true, completion: nil)
   }
 
   func refreshUI() {
