@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "station_grise.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "station_grise.png",
       "scale" : "2x"
     },
     {

@@ -175,17 +175,27 @@
                                     <action selector="close" destination="wKD-7y-fB1" eventType="touchUpInside" id="iCs-iY-bzE"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GDk-Un-JZc">
+                                <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Q7e-b3-BV8" firstAttribute="top" secondItem="QLZ-Ei-qoV" secondAttribute="bottom" constant="16" id="5Cd-KF-bN4"/>
+                            <constraint firstItem="GDk-Un-JZc" firstAttribute="top" secondItem="Q7e-b3-BV8" secondAttribute="bottom" constant="8" id="KZP-LR-3kk"/>
                             <constraint firstItem="Q7e-b3-BV8" firstAttribute="leading" secondItem="9Ww-sW-iPS" secondAttribute="leadingMargin" id="ekz-MG-r5Z"/>
+                            <constraint firstAttribute="trailing" secondItem="GDk-Un-JZc" secondAttribute="trailing" id="fHQ-AT-WvY"/>
+                            <constraint firstItem="GDk-Un-JZc" firstAttribute="leading" secondItem="9Ww-sW-iPS" secondAttribute="leading" id="lbL-0J-lTL"/>
+                            <constraint firstItem="xuy-kq-35c" firstAttribute="top" secondItem="GDk-Un-JZc" secondAttribute="bottom" id="mIs-jE-xXo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="GDk-Un-JZc" id="RGi-H8-bIB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0j-PU-uJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="36"/>
+            <point key="canvasLocation" x="1528.8" y="35.532233883058474"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
