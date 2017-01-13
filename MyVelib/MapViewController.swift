@@ -18,6 +18,9 @@ class MapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    mapView.delegate = self
+    mapView.showsUserLocation = true
     mapView.addAnnotations(list.allStations.map(StationAnnotation.init))
     
     if let stationToShow = stationToShow {
@@ -64,3 +67,36 @@ class StationAnnotation: NSObject, MKAnnotation {
   }
 
 }
+
+class StationAnnotationView: MKAnnotationView {
+  let label = UILabel(frame: CGRect(x: 0, y: -8, width: 36, height: 38))
+  
+  init(annotation: StationAnnotation) {
+    super.init(annotation: annotation, reuseIdentifier: "station")
+    image = #imageLiteral(resourceName: "station_grise")
+    label.text = "\(annotation.station.availableBikes)"
+    label.textAlignment = .center
+    label.textColor = .white
+    centerOffset = CGPoint(x: 0, y: -20)
+    addSubview(label)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+}
+
+extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard let annotation = annotation as? StationAnnotation else { return nil }
+    let annotationView: StationAnnotationView
+    if let reusedView = mapView.dequeueReusableAnnotationView(withIdentifier: "station") as? StationAnnotationView {
+      annotationView = reusedView
+    } else {
+      annotationView = StationAnnotationView(annotation: annotation)
+    }
+    return annotationView
+  }
+}
+
+
