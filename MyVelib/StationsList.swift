@@ -12,6 +12,8 @@ enum BikeAvailability {
   case bad, warning, good, undefined
 }
 
+// ce protocol concerne la gestion des favoris, car on a 2 types de favoris :
+// les favoris home et les favoris office
 protocol StationsList {
   var allStations: [Station] { get }
   var shortStationsList: [Station] { get }
@@ -66,7 +68,7 @@ struct GeolocalisedStationsList: StationsList {
   
   var allStations: [Station] { return modelController.stations }
   var shortStationsList: [Station] { 
-    return Array(allStations.filter { locationService.distance(of: $0.position.coordinate) < maximumDistance }.sorted(by: distance).prefix(5))
+    return Array(allStations.filter { locationService.distance(of: $0.position.coordinate) < maximumDistance }.sorted(by: distance).prefix(5)) //prefix(5) limite à 5 résultat
   }
   
   private func distance(lhs: Station, rhs: Station) -> Bool {

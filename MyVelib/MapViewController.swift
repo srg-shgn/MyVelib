@@ -112,11 +112,12 @@ class StationAnnotationView: MKAnnotationView {
   init(annotation: StationAnnotation, withFavoriteButton: Bool = false) {
     super.init(annotation: annotation, reuseIdentifier: "station")
     
+    image = #imageLiteral(resourceName: "station_grise")
     label.textAlignment = .center
     label.textColor = .white
     addSubview(label)
 
-    canShowCallout = true
+    canShowCallout = true //autorise l'affichage de l'annotation
     centerOffset = CGPoint(x: 0, y: -20)
     
     if withFavoriteButton {

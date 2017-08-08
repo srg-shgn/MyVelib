@@ -13,7 +13,7 @@ class BikeService {
   
   init() {
     let baseURL = URL(string: "https://api.jcdecaux.com/vls/v1/")!
-    let defaultQuery = ["apiKey": ""]
+    let defaultQuery = ["apiKey": "724914c3b0a4155c32588338ee11632406c5969a"]
     webService = WebService(baseURL: baseURL, defaultQuery: defaultQuery)
   }
   
